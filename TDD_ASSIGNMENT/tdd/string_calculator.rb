@@ -1,7 +1,7 @@
 class StringCalculator
     def add(numbers)
         return 0 if numbers.empty?
-        number_array = numbers.split(",")
+        number_array = numbers.split(Regexp.union(",", "\n", ","))
         integers = number_array.map(&:to_i)
         integers.sum
     end

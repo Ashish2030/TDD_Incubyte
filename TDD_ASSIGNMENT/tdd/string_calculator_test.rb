@@ -21,4 +21,9 @@ class StringCalculatorTest < Minitest::Test
     def test_multiple_numbers_sum
       assert_equal 6, @calculator.add("1,2,3")
     end
+
+    # Test case numbers separated by newline
+    def test_numbers_separated_by_newlines
+      assert_equal 6, @calculator.add("1\n2,3")
+    end
 end
