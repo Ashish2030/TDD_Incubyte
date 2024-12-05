@@ -1,5 +1,5 @@
 
-require_relative 'game.rb'
+require_relative 'string_calculator.rb'
 require 'minitest/autorun'
 
 class StringCalculatorTest < Minitest::Test
@@ -27,10 +27,17 @@ class StringCalculatorTest < Minitest::Test
       assert_equal 6, @calculator.add("1\n2,3")
     end
 
+    # Test case numbers having custom delima
     def test_custom_delimiter
       assert_equal 3, @calculator.add("//;\n1;2")
       assert_equal 15, @calculator.add("//-\n4-5-6")
       assert_equal 10, @calculator.add("//.\n1.2,3\n4")
+    end
+
+    # Test case numbers having negavtive value
+    def test_negative_numbers_raise_exception
+      error = assert_raises(RuntimeError) { @calculator.add("1,-2,3,-4") }
+      assert_equal "Negative numbers not allowed: -2, -4", error.message
     end
   
 end
